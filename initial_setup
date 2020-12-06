@@ -1,0 +1,21 @@
+#!/bin/bash
+set -ex
+
+rm -rf /etc/resolv.conf
+printf "nameserver 8.8.8.8\nnameserver 8.8.4.4" >/etc/resolv.conf
+sed -i 's|CheckSpace|#CheckSpace|' /etc/pacman.conf
+
+pacman-key --init
+pacman-key --populate archlinuxarm
+killall -KILL gpg-agent
+
+pacman -Syy
+pacman -Rns --noconfirm linux-aarch64
+pacman -Su --noconfirm --overwrite=* --needed base-devel git
+
+usermod -a -G wheel alarm
+sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
+chown alarm:alarm /home/alarm -R
+
+mkdir -p /pkgs
+chown alarm:alarm /pkgs -R

@@ -1,0 +1,25 @@
+#!/bin/bash
+export DEST="rootfs"
+
+cleanup() {
+  if [ -e $DEST/proc/cmdline ]; then
+    umount $DEST/proc
+  fi
+  if [ -d $DEST/sys/kernel ]; then
+    umount $DEST/sys
+  fi
+  umount $DEST/dev || true
+  umount $DEST/tmp || true
+}
+trap cleanup EXIT
+
+cmd="$*"
+mount -o bind /tmp $DEST/tmp
+mount -o bind /dev $DEST/dev
+chroot $DEST mount -t proc proc /proc || true
+chroot $DEST mount -t sysfs sys /sys || true
+chroot $DEST "$cmd"
+chroot $DEST umount /sys
+chroot $DEST umount /proc
+umount $DEST/dev
+umount $DEST/tmp
