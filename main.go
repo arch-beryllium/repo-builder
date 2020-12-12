@@ -20,21 +20,32 @@ import (
 
 var wantedManjaroPackages = []string{
 	"attica-git",
+	"bluedevil-git",
 	"bluez-qt-git",
 	"breeze-git",
 	"breeze-icons-git",
+	"buho-git",
+	"calindori-git",
+	"discover-git",
 	"frameworkintegration-git",
+	"index-git",
+	"kaccounts-integration-git",
+	"kaccounts-providers-git",
 	"kactivities-git",
 	"kactivities-stats-git",
 	"kactivitymanagerd-git",
+	"kalk-git",
 	"karchive-git",
 	"kauth-git",
 	"kbookmarks-git",
+	"kcalendarcore-git",
+	"kclock-git",
 	"kcmutils-git",
 	"kcodecs-git",
 	"kcompletion-git",
 	"kconfig-git",
 	"kconfigwidgets-git",
+	"kcontacts-git",
 	"kcoreaddons-git",
 	"kcrash-git",
 	"kdbusaddons-git",
@@ -43,8 +54,11 @@ var wantedManjaroPackages = []string{
 	"kdecoration-git",
 	"kded-git",
 	"kdelibs4support-git",
+	"kdesignerplugin-git",
 	"kdesu-git",
+	"kdnssd-git",
 	"kemoticons-git",
+	"keysmith-git",
 	"kglobalaccel-git",
 	"kguiaddons-git",
 	"kholidays-git",
@@ -52,20 +66,30 @@ var wantedManjaroPackages = []string{
 	"kiconthemes-git",
 	"kidletime-git",
 	"kinit-git",
+	"kio-extras-git",
 	"kio-git",
+	"kirigami-addons-git",
 	"kirigami2-git",
 	"kitemmodels-git",
 	"kitemviews-git",
 	"kjobwidgets-git",
+	"kjs-git",
 	"knewstuff-git",
 	"knotifications-git",
 	"knotifyconfig-git",
+	"kongress-git",
 	"kpackage-git",
 	"kparts-git",
 	"kpeople-git",
+	"kpeoplesink-git",
+	"kpeoplevcard-git",
+	"kplotting-git",
 	"kpty-git",
 	"kquickcharts-git",
+	"kquicksyntaxhighlighter-git",
+	"krecorder-git",
 	"krunner-git",
+	"kscreen-git",
 	"kscreenlocker-git",
 	"kservice-git",
 	"ktexteditor-git",
@@ -73,36 +97,113 @@ var wantedManjaroPackages = []string{
 	"kunitconversion-git",
 	"kuserfeedback-git",
 	"kwallet-git",
+	"kwallet-pam-git",
 	"kwayland-git",
 	"kwayland-integration-git",
 	"kwayland-server-git",
+	"kweather-git",
 	"kwidgetsaddons-git",
 	"kwin-git",
 	"kwindowsystem-git",
 	"kxmlgui-git",
+	"libkgapi-git",
 	"libkscreen-git",
 	"libksysguard-git",
 	"libofono-qt",
 	"libqofono-qt5",
+	"manjaro-arm-keyring",
+	"manjaro-keyring",
+	"maliit-framework-git",
+	"maliit-keyboard-git",
+	"mauikit-git",
 	"milou-git",
 	"modemmanager-qt-git",
+	"mplus-font",
 	"networkmanager-qt-git",
-	"packagekit-qt5",
+	"nota-git",
+	"ofonoctl",
+	"okular-mobile-git",
+	"oxygen-git",
+	"plasma-angelfish-git",
+	"plasma-dialer-git",
 	"plasma-framework-git",
 	"plasma-integration-git",
+	"plasma-mobile-nm-git",
 	"plasma-mobile-settings",
 	"plasma-nano-git",
+	"plasma-pa-git",
 	"plasma-phone-components-git",
+	"plasma-phonebook-git",
+	"plasma-pix-git",
+	"plasma-settings-git",
+	"plasma-wayland-protocols-git",
 	"plasma-wayland-session-git",
 	"plasma-workspace-git",
+	"polkit-kde-agent-git",
+	"powerdevil-git",
+	"presage-git",
 	"prison-git",
+	"purpose-git",
+	"qmlkonsole-git",
 	"qqc2-desktop-style-git",
-	"qt5-pim-git",
+	"qt5-3d",
+	"qt5-base",
+	"qt5-charts",
+	"qt5-connectivity",
+	"qt5-datavis3d",
+	"qt5-declarative",
+	"qt5-doc",
+	"qt5-es2-base",
+	"qt5-es2-declarative",
+	"qt5-es2-multimedia",
+	"qt5-es2-wayland",
+	"qt5-es2-xcb-private-headers",
+	"qt5-examples",
 	"qt5-feedback",
+	"qt5-gamepad",
+	"qt5-graphicaleffects",
+	"qt5-imageformats",
+	"qt5-location",
+	"qt5-lottie",
+	"qt5-mqtt",
+	"qt5-multimedia",
+	"qt5-networkauth",
+	"qt5-pim-git",
+	"qt5-purchasing",
+	"qt5-quick3d",
+	"qt5-quickcontrols",
+	"qt5-quickcontrols2",
+	"qt5-quicktimeline",
+	"qt5-remoteobjects",
+	"qt5-script",
+	"qt5-scxml",
+	"qt5-sensors",
+	"qt5-serialbus",
+	"qt5-serialport",
+	"qt5-speech",
+	"qt5-svg",
+	"qt5-tools",
+	"qt5-translations",
+	"qt5-virtualkeyboard",
+	"qt5-wayland",
+	"qt5-webchannel",
+	"qt5-webengine",
+	"qt5-webglplugin",
+	"qt5-webkit",
+	"qt5-websockets",
+	"qt5-webview",
+	"qt5-x11extras",
+	"qt5-xcb-private-headers",
+	"qt5-xmlpatterns",
+	"signon-kwallet-extension-git",
 	"solid-git",
 	"sonnet-git",
+	"spacebar-git",
 	"syntax-highlighting-git",
+	"telepathy-ofono",
 	"threadweaver-git",
+	"vvave-git",
+	"xdg-desktop-portal-kde-git",
 }
 
 func main() {
@@ -233,77 +334,79 @@ func chroot(cmd string) {
 }
 
 func downloadManjaroPackages() {
-	baseRepoURL := "https://ftp.halifax.rwth-aachen.de/manjaro/arm-unstable/community/aarch64"
-	dbFile := "community.tar.gz"
-	dirPath := filepath.Join("repo", "plasma-mobile", "aarch64")
-	if _, err := os.Stat(dirPath); os.IsNotExist(err) {
-		err = os.MkdirAll(dirPath, 0755)
+	baseRepoURL := "https://ftp.halifax.rwth-aachen.de/manjaro/arm-unstable/%s/aarch64"
+	for _, repo := range []string{"core", "extra", "community"} {
+		dbFile := fmt.Sprintf("%s.tar.gz", repo)
+		dirPath := filepath.Join("repo", "plasma-mobile", "aarch64")
+		if _, err := os.Stat(dirPath); os.IsNotExist(err) {
+			err = os.MkdirAll(dirPath, 0755)
+			if err != nil {
+				fmt.Printf("Failed to create %s: %v\n", dirPath, err)
+				os.Exit(1)
+			}
+		}
+		err := downloadFile(dbFile, fmt.Sprintf("%s/%s", fmt.Sprintf(baseRepoURL, repo), fmt.Sprintf("%s.db", repo)))
 		if err != nil {
-			fmt.Printf("Failed to create %s: %v\n", dirPath, err)
+			fmt.Printf("Failed to download repo db: %v", err)
 			os.Exit(1)
 		}
-	}
-	err := downloadFile(dbFile, fmt.Sprintf("%s/%s", baseRepoURL, "community.db"))
-	if err != nil {
-		fmt.Printf("Failed to download repo db: %v", err)
-		os.Exit(1)
-	}
-	var tmpDir string
-	tmpDir, err = ioutil.TempDir("", "arch-repo-builder-*")
-	if err != nil {
-		fmt.Printf("%v\n", err)
-		os.Exit(1)
-	}
+		var tmpDir string
+		tmpDir, err = ioutil.TempDir("", "arch-repo-builder-*")
+		if err != nil {
+			fmt.Printf("%v\n", err)
+			os.Exit(1)
+		}
 
-	err = archiver.Unarchive(dbFile, tmpDir)
-	if err != nil {
-		fmt.Printf("Failed to read %s: %v\n", dbFile, err)
-		os.Exit(1)
-	}
-	var dirs []os.FileInfo
-	dirs, err = ioutil.ReadDir(tmpDir)
-	for _, dir := range dirs {
-		descFilePath := filepath.Join(tmpDir, dir.Name(), "desc")
-		var content []byte
-		content, err = ioutil.ReadFile(descFilePath)
+		err = archiver.Unarchive(dbFile, tmpDir)
 		if err != nil {
-			fmt.Printf("Failed to read %s: %v\n", descFilePath, err)
+			fmt.Printf("Failed to read %s: %v\n", dbFile, err)
 			os.Exit(1)
 		}
-		fileName := ""
-		pkgName := ""
-		lines := strings.Split(string(content), "\n")
-		for i, line := range lines {
-			if line == "%FILENAME%" {
-				fileName = lines[i+1]
+		var dirs []os.FileInfo
+		dirs, err = ioutil.ReadDir(tmpDir)
+		for _, dir := range dirs {
+			descFilePath := filepath.Join(tmpDir, dir.Name(), "desc")
+			var content []byte
+			content, err = ioutil.ReadFile(descFilePath)
+			if err != nil {
+				fmt.Printf("Failed to read %s: %v\n", descFilePath, err)
+				os.Exit(1)
 			}
-			if line == "%NAME%" {
-				pkgName = lines[i+1]
-			}
-			if len(fileName) > 0 && len(pkgName) > 0 {
-				break
-			}
-		}
-		for _, pkg := range wantedManjaroPackages {
-			if pkg == pkgName {
-				filePath := filepath.Join(dirPath, fileName)
-				fileURL := fmt.Sprintf("%s/%s", baseRepoURL, fileName)
-				if _, err = os.Stat(filePath); os.IsNotExist(err) {
-					err = downloadFile(filePath, fileURL)
-					if err != nil {
-						fmt.Printf("Failed to download %s: %v\n", fileURL, err)
-						os.Exit(1)
-					}
-					addPackage("plasma-mobile", fileName)
+			fileName := ""
+			pkgName := ""
+			lines := strings.Split(string(content), "\n")
+			for i, line := range lines {
+				if line == "%FILENAME%" {
+					fileName = lines[i+1]
 				}
-				break
+				if line == "%NAME%" {
+					pkgName = lines[i+1]
+				}
+				if len(fileName) > 0 && len(pkgName) > 0 {
+					break
+				}
+			}
+			for _, pkg := range wantedManjaroPackages {
+				if pkg == pkgName {
+					filePath := filepath.Join(dirPath, fileName)
+					fileURL := fmt.Sprintf("%s/%s", fmt.Sprintf(baseRepoURL, repo), fileName)
+					if _, err = os.Stat(filePath); os.IsNotExist(err) {
+						err = downloadFile(filePath, fileURL)
+						if err != nil {
+							fmt.Printf("Failed to download %s: %v\n", fileURL, err)
+							os.Exit(1)
+						}
+						addPackage("plasma-mobile", fileName)
+					}
+					break
+				}
 			}
 		}
-	}
-	err = os.RemoveAll(tmpDir)
-	if err != nil {
-		fmt.Printf("Failed to remove %s: %v\n", tmpDir, err)
-		os.Exit(1)
+		err = os.RemoveAll(tmpDir)
+		if err != nil {
+			fmt.Printf("Failed to remove %s: %v\n", tmpDir, err)
+			os.Exit(1)
+		}
 	}
 }
 
