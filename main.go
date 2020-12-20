@@ -314,12 +314,14 @@ func buildCustomPackages() {
 			fmt.Printf("Failed to list files in %s: %v\n", pkgPath, err)
 			os.Exit(1)
 		}
-		err = os.Rename(filepath.Join(pkgPath, fileName), filepath.Join("repo", "beryllium", "aarch64", fileName))
-		if err != nil {
-			fmt.Printf("Failed to move %s: %v\n", fileName, err)
-			os.Exit(1)
+		if _, err := os.Stat(filepath.Join("repo", "beryllium", "aarch64", fileName)); os.IsNotExist(err) {
+			err = os.Rename(filepath.Join(pkgPath, fileName), filepath.Join("repo", "beryllium", "aarch64", fileName))
+			if err != nil {
+				fmt.Printf("Failed to move %s: %v\n", fileName, err)
+				os.Exit(1)
+			}
+			addPackage("beryllium", fileName)
 		}
-		addPackage("beryllium", fileName)
 	}
 }
 
