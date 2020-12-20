@@ -300,11 +300,12 @@ func buildCustomPackages() {
 		"qrtr-git",
 		"rmtfs-git",
 		"tqftpserv-git",
+		"ofono-qrtr",
 	} {
 		fileName := ""
 		pkgPath := filepath.Join("rootfs", "pkgs", pkgName)
 		err = filepath.Walk(pkgPath, func(p string, info os.FileInfo, err error) error {
-			if strings.HasPrefix(p, filepath.Join(pkgPath, pkgName)) && strings.HasSuffix(p, ".pkg.tar.xz") {
+			if strings.HasSuffix(p, ".pkg.tar.xz") {
 				fileName = path.Base(p)
 			}
 			return nil
@@ -334,7 +335,7 @@ func chroot(cmd string) {
 }
 
 func downloadManjaroPackages() {
-	baseRepoURL := "https://ftp.halifax.rwth-aachen.de/manjaro/arm-unstable/%s/aarch64"
+	baseRepoURL := "https://mirror.alpix.eu/manjaro/arm-unstable/%s/aarch64"
 	for _, repo := range []string{"core", "extra", "community"} {
 		dbFile := fmt.Sprintf("%s.tar.gz", repo)
 		dirPath := filepath.Join("repo", "plasma-mobile", "aarch64")
