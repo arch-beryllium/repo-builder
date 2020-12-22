@@ -302,25 +302,30 @@ func buildCustomPackages() {
 		"tqftpserv-git",
 		"ofono-qrtr",
 	} {
-		fileName := ""
 		pkgPath := filepath.Join("rootfs", "pkgs", pkgName)
 		err = filepath.Walk(pkgPath, func(p string, info os.FileInfo, err error) error {
 			if strings.HasSuffix(p, ".pkg.tar.xz") {
-				fileName = path.Base(p)
+				fileName := path.Base(p)
+				if _, err = os.Stat(filepath.Join("repo", "beryllium", "aarch64", fileName)); os.IsNotExist(err) {
+					err = os.Rename(filepath.Join(pkgPath, fileName), filepath.Join("repo", "beryllium", "aarch64", fileName))
+					if err != nil {
+						fmt.Printf("Failed to move %s: %v\n", fileName, err)
+						os.Exit(1)
+					}
+					addPackage("beryllium", fileName)
+				} else {
+					err = os.Remove(filepath.Join(pkgPath, fileName))
+					if err != nil {
+						fmt.Printf("Failed to remove %s: %v\n", fileName, err)
+						os.Exit(1)
+					}
+				}
 			}
 			return nil
 		})
 		if err != nil {
 			fmt.Printf("Failed to list files in %s: %v\n", pkgPath, err)
 			os.Exit(1)
-		}
-		if _, err := os.Stat(filepath.Join("repo", "beryllium", "aarch64", fileName)); os.IsNotExist(err) {
-			err = os.Rename(filepath.Join(pkgPath, fileName), filepath.Join("repo", "beryllium", "aarch64", fileName))
-			if err != nil {
-				fmt.Printf("Failed to move %s: %v\n", fileName, err)
-				os.Exit(1)
-			}
-			addPackage("beryllium", fileName)
 		}
 	}
 }
