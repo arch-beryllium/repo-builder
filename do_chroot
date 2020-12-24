@@ -2,6 +2,7 @@
 export DEST="rootfs"
 
 cleanup() {
+  umount $DEST/mnt/plasma-mobile || true
   if [ -e $DEST/proc/cmdline ]; then
     umount $DEST/proc
   fi
@@ -14,6 +15,8 @@ cleanup() {
 trap cleanup EXIT
 
 cmd="$*"
+mkdir -p $DEST/mnt/plasma-mobile
+mount -o bind ./repo/plasma-mobile/aarch64/ $DEST/mnt/plasma-mobile
 mount -o bind /tmp $DEST/tmp
 mount -o bind /dev $DEST/dev
 chroot $DEST mount -t proc proc /proc || true
@@ -23,3 +26,4 @@ chroot $DEST umount /sys
 chroot $DEST umount /proc
 umount $DEST/dev
 umount $DEST/tmp
+umount $DEST/mnt/plasma-mobile

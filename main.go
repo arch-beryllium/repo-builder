@@ -51,12 +51,14 @@ var wantedManjaroPackages = []string{
 	"kdbusaddons-git",
 	"kde-cli-tools-git",
 	"kdeclarative-git",
+	"kdeconnect-git",
 	"kdecoration-git",
 	"kded-git",
 	"kdelibs4support-git",
 	"kdesignerplugin-git",
 	"kdesu-git",
 	"kdnssd-git",
+	"kdoctools-git",
 	"kemoticons-git",
 	"keysmith-git",
 	"kglobalaccel-git",
@@ -77,6 +79,7 @@ var wantedManjaroPackages = []string{
 	"knewstuff-git",
 	"knotifications-git",
 	"knotifyconfig-git",
+	"koko",
 	"kongress-git",
 	"kpackage-git",
 	"kparts-git",
@@ -85,7 +88,9 @@ var wantedManjaroPackages = []string{
 	"kpeoplevcard-git",
 	"kplotting-git",
 	"kpty-git",
+	"kpublictransport-git",
 	"kquickcharts-git",
+	"kquickimageeditor-git",
 	"kquicksyntaxhighlighter-git",
 	"krecorder-git",
 	"krunner-git",
@@ -94,6 +99,7 @@ var wantedManjaroPackages = []string{
 	"kservice-git",
 	"ktexteditor-git",
 	"ktextwidgets-git",
+	"ktrip-git",
 	"kunitconversion-git",
 	"kuserfeedback-git",
 	"kwallet-git",
@@ -111,14 +117,14 @@ var wantedManjaroPackages = []string{
 	"libksysguard-git",
 	"libofono-qt",
 	"libqofono-qt5",
-	"manjaro-arm-keyring",
-	"manjaro-keyring",
+	"libquotient-git",
 	"maliit-framework-git",
 	"maliit-keyboard-git",
 	"mauikit-git",
 	"milou-git",
 	"modemmanager-qt-git",
 	"mplus-font",
+	"neochat-git",
 	"networkmanager-qt-git",
 	"nota-git",
 	"ofonoctl",
@@ -139,12 +145,14 @@ var wantedManjaroPackages = []string{
 	"plasma-wayland-protocols-git",
 	"plasma-wayland-session-git",
 	"plasma-workspace-git",
+	"plymouth-shim",
 	"polkit-kde-agent-git",
 	"powerdevil-git",
 	"presage-git",
 	"prison-git",
 	"purpose-git",
 	"qmlkonsole-git",
+	"qqc2-breeze-style-git",
 	"qqc2-desktop-style-git",
 	"qt5-3d",
 	"qt5-base",
@@ -265,11 +273,6 @@ func buildCustomPackages() {
 			fmt.Printf("Failed to read %s: %v\n", path.Base(rootfsURL), err)
 			os.Exit(1)
 		}
-		err = ioutil.WriteFile(filepath.Join("rootfs", "etc", "pacman.d", "mirrorlist"), []byte("Server = http://localhost:8080/$repo/$arch"), 0755)
-		if err != nil {
-			fmt.Printf("Failed to write mirrorlist: %v\n", err)
-			os.Exit(1)
-		}
 		err = copy.Copy("initial_setup", filepath.Join("rootfs", "initial_setup"))
 		if err != nil {
 			fmt.Printf("Failed to copy initial_setup: %v\n", err)
@@ -301,6 +304,8 @@ func buildCustomPackages() {
 		"rmtfs-git",
 		"tqftpserv-git",
 		"ofono-qrtr",
+		"kwin-git",
+		"qmic-git",
 	} {
 		pkgPath := filepath.Join("rootfs", "pkgs", pkgName)
 		err = filepath.Walk(pkgPath, func(p string, info os.FileInfo, err error) error {
