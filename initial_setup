@@ -43,6 +43,7 @@ pacman -Su --noconfirm --overwrite=* --needed base-devel git ccache
 usermod -a -G wheel alarm
 sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
 chown alarm:alarm /home/alarm -R
+su alarm -s /bin/bash -c "git config --global pull.rebase false"
 
 mkdir -p /pkgs
 chown alarm:alarm /pkgs -R

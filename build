@@ -36,18 +36,15 @@ function build_and_install_package() {
 
 # Make sure to uninstall pipewire to build kwin without pipewire
 if pacman -Qs pipewire >/dev/null; then
-  pacman -Rdd pipwire --noconfirm
+  pacman -Rdd pipewire --noconfirm
 fi
 
-build_package "https://github.com/jld3103/alsa-ucm-beryllium.git" &
-build_package "https://github.com/jld3103/ofono-qrtr.git" &
-build_package "https://github.com/jld3103/kwin-git.git" &
 build_and_install_package "https://aur.archlinux.org/qrtr-git.git"
 build_and_install_package "https://aur.archlinux.org/qmic-git.git"
-for url in \
-  "https://aur.archlinux.org/tqftpserv-git.git" \
-  "https://aur.archlinux.org/rmtfs-git.git" \
-  "https://aur.archlinux.org/pd-mapper-git.git"; do
-  build_package "$url" &
-done
-wait
+build_package "https://aur.archlinux.org/tqftpserv-git.git"
+build_package "https://aur.archlinux.org/rmtfs-git.git"
+build_package "https://aur.archlinux.org/pd-mapper-git.git"
+
+build_package "https://github.com/jld3103/alsa-ucm-beryllium.git"
+build_package "https://github.com/jld3103/ofono-qrtr.git"
+build_package "https://github.com/jld3103/kwin-git.git"
