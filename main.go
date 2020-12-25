@@ -22,6 +22,8 @@ var wantedManjaroPackages = []string{
 	"attica-git",
 	"bluedevil-git",
 	"bluez-qt-git",
+	"bootsplash-systemd",
+	"bootsplash-theme-kde",
 	"breeze-git",
 	"breeze-icons-git",
 	"buho-git",
