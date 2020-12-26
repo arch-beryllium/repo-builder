@@ -41,10 +41,10 @@ fi
 
 build_and_install_package "https://aur.archlinux.org/qrtr-git.git"
 build_and_install_package "https://aur.archlinux.org/qmic-git.git"
-build_package "https://aur.archlinux.org/tqftpserv-git.git"
+build_package "https://github.com/jld3103/tqftpserv-git.git"
 build_package "https://aur.archlinux.org/rmtfs-git.git"
 build_package "https://aur.archlinux.org/pd-mapper-git.git"
 
 build_package "https://github.com/jld3103/alsa-ucm-beryllium.git"
-build_package "https://github.com/jld3103/ofono-qrtr.git"
+build_package "https://github.com/jld3103/ofono-git.git"
 build_package "https://github.com/jld3103/kwin-git.git"
