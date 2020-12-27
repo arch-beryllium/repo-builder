@@ -31,6 +31,7 @@ var wantedManjaroPackages = []string{
 	"discover-git",
 	"frameworkintegration-git",
 	"index-git",
+	"inxi",
 	"kaccounts-integration-git",
 	"kaccounts-providers-git",
 	"kactivities-git",
@@ -214,6 +215,7 @@ var wantedManjaroPackages = []string{
 	"threadweaver-git",
 	"vvave-git",
 	"xdg-desktop-portal-kde-git",
+	"zswap-arm",
 }
 
 func main() {
