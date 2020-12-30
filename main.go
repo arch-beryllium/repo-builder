@@ -20,6 +20,7 @@ import (
 
 var wantedManjaroPackages = []string{
 	"attica-git",
+	"baloo-git",
 	"bluedevil-git",
 	"bluez-qt-git",
 	"bootsplash-systemd",
@@ -29,6 +30,7 @@ var wantedManjaroPackages = []string{
 	"buho-git",
 	"calindori-git",
 	"discover-git",
+	"extra-cmake-modules-git",
 	"frameworkintegration-git",
 	"index-git",
 	"inxi",
@@ -64,6 +66,7 @@ var wantedManjaroPackages = []string{
 	"kdoctools-git",
 	"kemoticons-git",
 	"keysmith-git",
+	"kfilemetadata-git",
 	"kglobalaccel-git",
 	"kguiaddons-git",
 	"kholidays-git",
@@ -134,6 +137,7 @@ var wantedManjaroPackages = []string{
 	"okular-mobile-git",
 	"oxygen-git",
 	"plasma-angelfish-git",
+	"plasma-camera-git",
 	"plasma-dialer-git",
 	"plasma-framework-git",
 	"plasma-integration-git",
@@ -148,6 +152,7 @@ var wantedManjaroPackages = []string{
 	"plasma-wayland-protocols-git",
 	"plasma-wayland-session-git",
 	"plasma-workspace-git",
+	"plasma-workspace-wallpapers-git",
 	"plymouth-shim",
 	"polkit-kde-agent-git",
 	"powerdevil-git",
@@ -157,55 +162,12 @@ var wantedManjaroPackages = []string{
 	"qmlkonsole-git",
 	"qqc2-breeze-style-git",
 	"qqc2-desktop-style-git",
-	"qt5-3d",
-	"qt5-base",
-	"qt5-charts",
-	"qt5-connectivity",
-	"qt5-datavis3d",
-	"qt5-declarative",
-	"qt5-doc",
 	"qt5-es2-base",
 	"qt5-es2-declarative",
 	"qt5-es2-multimedia",
 	"qt5-es2-wayland",
 	"qt5-es2-xcb-private-headers",
-	"qt5-examples",
-	"qt5-feedback",
-	"qt5-gamepad",
-	"qt5-graphicaleffects",
-	"qt5-imageformats",
-	"qt5-location",
-	"qt5-lottie",
-	"qt5-mqtt",
-	"qt5-multimedia",
-	"qt5-networkauth",
 	"qt5-pim-git",
-	"qt5-purchasing",
-	"qt5-quick3d",
-	"qt5-quickcontrols",
-	"qt5-quickcontrols2",
-	"qt5-quicktimeline",
-	"qt5-remoteobjects",
-	"qt5-script",
-	"qt5-scxml",
-	"qt5-sensors",
-	"qt5-serialbus",
-	"qt5-serialport",
-	"qt5-speech",
-	"qt5-svg",
-	"qt5-tools",
-	"qt5-translations",
-	"qt5-virtualkeyboard",
-	"qt5-wayland",
-	"qt5-webchannel",
-	"qt5-webengine",
-	"qt5-webglplugin",
-	"qt5-webkit",
-	"qt5-websockets",
-	"qt5-webview",
-	"qt5-x11extras",
-	"qt5-xcb-private-headers",
-	"qt5-xmlpatterns",
 	"signon-kwallet-extension-git",
 	"solid-git",
 	"sonnet-git",
@@ -391,6 +353,7 @@ func downloadManjaroPackages() {
 			}
 			fileName := ""
 			pkgName := ""
+			packager := ""
 			lines := strings.Split(string(content), "\n")
 			for i, line := range lines {
 				if line == "%FILENAME%" {
@@ -399,12 +362,19 @@ func downloadManjaroPackages() {
 				if line == "%NAME%" {
 					pkgName = lines[i+1]
 				}
-				if len(fileName) > 0 && len(pkgName) > 0 {
+				if line == "%PACKAGER%" {
+					packager = lines[i+1]
+				}
+				if len(fileName) > 0 && len(pkgName) > 0 && len(packager) > 0 {
 					break
 				}
 			}
 			for _, pkg := range wantedManjaroPackages {
 				if pkg == pkgName {
+					if strings.Contains(packager, "Arch Linux ARM Build System") {
+						fmt.Printf("Package %s is already provided by ALARM\n", pkgName)
+						continue
+					}
 					filePath := filepath.Join(dirPath, fileName)
 					fileURL := fmt.Sprintf("%s/%s", fmt.Sprintf(baseRepoURL, repo), fileName)
 					if _, err = os.Stat(filePath); os.IsNotExist(err) {
