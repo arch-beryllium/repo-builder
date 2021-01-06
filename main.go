@@ -265,6 +265,7 @@ func buildCustomPackages() {
 	chroot("/build")
 	for _, pkgName := range []string{
 		"firmware-xiaomi-beryllium-git",
+		"linux-beryllium",
 		"alsa-ucm-beryllium",
 		"pd-mapper-git",
 		"qrtr-git",
